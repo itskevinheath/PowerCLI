@@ -57,15 +57,6 @@ $oscust = get-oscustomizationspec "domain.local"
         #update vmtools
         Update-Tools $VM.Name -NoReboot
 
-        #check if Server should not be on the Domain, remove from domain and add local admin creds, delete from AD
-        if($VM.DomainJoined -eq "false"){
-            Invoke-Command -ComputerName "$($vm.name).domain.local" -ScriptBlock { 
-                param($cred)
-                Remove-Computer -Restart -Force -PassThru -UnjoinDomainCredential $cred
-            } -argumentlist $cred
-            Remove-ADComputer $VM.Name -Server domain.local -Credential $cred -Confirm:$false
-        }
-
         #copy config to the machine for DSC
         Copy-Item "\\domain.local\repo$\$config.config" "\\$($vm.name).domain.local\C$\Config\$($vm.name).config" -Force -PassThru
 
