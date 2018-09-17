@@ -6,7 +6,7 @@ $VM = $VMConfig.VM
 [xml]$DCConfig = Get-Content "\\domain.local\repo$\datacenters.config"
 $DC = $DCConfig.Datacenters.Datacenter | where {$_.Name -eq $VM.Datacenter}
 
-#make absolutely sure you enter domain creds, ex. 2kheath@domain.local
+#admin creds to domain/vsphere
 if(!$VIServer -or !$cred){
     do{
     $cred = get-credential
