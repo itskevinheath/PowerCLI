@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VM>
+    
+    <Name>SampleServer</Name>
+    <OSVersion>2016</OSVersion><!--Must Correspond to available Template-->
+    <Desktop>Yes</Desktop><!--WARN, if No will install Server Core without Desktop Experience-->
+    <DiskGB>60</DiskGB><!--Minimum 45-->
+    <MemoryGB>4</MemoryGB><!--Minimum 1-->
+    <NumCPU>2</NumCPU><!--Minimum 1-->
+    <OU>Production Servers</OU>
+
+    <Network>
+        <VLAN>PROD</VLAN><!--PROD, QA, DEV, DMZ-->
+        <IP>10.1.100.90</IP>
+        <Subnet>255.255.255.0</Subnet>
+        <Gateway>10.1.100.1</Gateway>
+        <PrimaryDNS>10.1.100.10</PrimaryDNS>
+        <SecondaryDNS>10.1.100.11</SecondaryDNS>
+    </Network>
+
+    <Datacenter>OnPrem-1</Datacenter><!-- Specify which vmware host to use-->
+    <Host>default</Host><!-- Specify if ESXI Host should not be automatically chosen -->
+    <Datastore>default</Datastore><!-- Specify if VMWare Datastore should not be automatically chosen -->
+</VM>
